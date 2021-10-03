@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.celisapp.domain.Post;
 import com.celisapp.domain.User;
 import com.celisapp.dto.UserDTO;
 import com.celisapp.service.UserService;
@@ -63,6 +64,12 @@ public class UserResource {
 		user = service.update(user);
 		UserDTO userDTO = new UserDTO(user);
 		return ResponseEntity.ok().body(userDTO);	
+	}
+	
+	@RequestMapping(value ="/{id}/posts", method = RequestMethod.GET)
+	public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+		User user = service.findById(id);
+		return ResponseEntity.ok().body(user.getPost()) ;	
 	}
 
 }
