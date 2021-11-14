@@ -20,6 +20,8 @@ import com.celisapp.domain.User;
 import com.celisapp.dto.UserDTO;
 import com.celisapp.service.UserService;
 
+import io.swagger.annotations.ApiOperation;
+
 
 @RestController
 @RequestMapping(value ="/users")
@@ -28,6 +30,7 @@ public class UserResource {
 	@Autowired
 	private UserService service;
 	
+	@ApiOperation(value = "Lista todos os usuários")
 	@GetMapping
 	public ResponseEntity<List<UserDTO>> findAll (){
 		List <User> users = service.findAll();
@@ -35,6 +38,7 @@ public class UserResource {
 		return ResponseEntity.ok().body(usersDTO) ;	
 	}
 	
+	@ApiOperation(value = "Lista o usuário pelo ID")
 	@RequestMapping(value ="/{id}", method = RequestMethod.GET)
 	public ResponseEntity<UserDTO> findById (@PathVariable String id){
 		User user = service.findById(id);
@@ -42,6 +46,7 @@ public class UserResource {
 		return ResponseEntity.ok().body(userDTO) ;	
 	}
 	
+	@ApiOperation(value = "Cria um novo usuário")
 	@PostMapping
 	public ResponseEntity<Void> insert (@RequestBody UserDTO userDto){
 		User user = service.fromDTO(userDto);
@@ -51,12 +56,14 @@ public class UserResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@ApiOperation(value = "Deleta o usuário através do ID")
 	@RequestMapping(value ="/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable String id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();	
 	}
 	
+	@ApiOperation(value = "Edita um usuário pelo ID")
 	@RequestMapping(value ="/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<UserDTO> update(@PathVariable String id , @RequestBody UserDTO userDto){
 		User user = service.fromDTO(userDto);
@@ -66,6 +73,7 @@ public class UserResource {
 		return ResponseEntity.ok().body(userDTO);	
 	}
 	
+	@ApiOperation(value = "Lista os posts de um usuário com base no ID do usuário")
 	@RequestMapping(value ="/{id}/posts", method = RequestMethod.GET)
 	public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
 		User user = service.findById(id);

@@ -34,5 +34,13 @@ public class PostService {
 		return repo.fullSearch(text, minDate, maxDate);
 	}
 	
+	public List<Post> getAllPosts(){
+		return repo.findAll();
+	}
+	
+	public void addPost(Post post) {
+		repo.save(post);
+	}
+	
 
 }
