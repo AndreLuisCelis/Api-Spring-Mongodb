@@ -38,6 +38,6 @@ Foi utilizado o Swagger para documentar a API , e através do swagger é possive
 
 ----------------------------------------
 
-![imagem do projeto](img.png)
+[![imagem do projeto](img.png)](https://celisapp-workshop-mongodb.herokuapp.com/swagger-ui.html?target=_blank)
 ------------------------------------------
 
