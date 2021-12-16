@@ -9,7 +9,7 @@ Foi utilizado o Swagger para documentar a API , e através do swagger é possive
 
 
 ## Deploy da Aplicação :dash:
-> <a href="https://celisapp-workshop-mongodb.herokuapp.com/swagger-ui.html" target="_blank">Link do deploy da aplicação:</a>
+> <a href="https://celisapp-workshop-mongodb.herokuapp.com/swagger-ui.html" target="blank">Link do deploy da aplicação:</a>
 
 
 
